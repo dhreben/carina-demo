@@ -36,7 +36,7 @@ import com.qaprosoft.carina.demo.api.PostUserMethod;
 public class APISampleTest extends AbstractTest {
 
     @Test(description = "JIRA#DEMO-0001")
-    @MethodOwner(owner = "qpsdemo")
+    @MethodOwner(owner = "test")
     public void testCreateUser() throws Exception {
         setCases("4555,54545");
         PostUserMethod api = new PostUserMethod();
