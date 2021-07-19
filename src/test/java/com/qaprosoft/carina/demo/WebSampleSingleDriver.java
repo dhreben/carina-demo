@@ -22,9 +22,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import com.qaprosoft.carina.core.foundation.AbstractTest;
+import com.qaprosoft.carina.core.foundation.IAbstractTest;
+import com.zebrunner.agent.core.annotation.TestLabel;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
-import com.qaprosoft.carina.core.foundation.utils.tag.TestTag;
 import com.qaprosoft.carina.demo.gui.components.FooterMenu;
 import com.qaprosoft.carina.demo.gui.components.compare.ModelSpecs;
 import com.qaprosoft.carina.demo.gui.components.compare.ModelSpecs.SpecType;
@@ -36,7 +36,7 @@ import com.qaprosoft.carina.demo.gui.pages.HomePage;
  * 
  * @author qpsdemo
  */
-public class WebSampleSingleDriver extends AbstractTest {
+public class WebSampleSingleDriver implements IAbstractTest {
     HomePage homePage = null;
     CompareModelsPage comparePage = null;
     List<ModelSpecs> specs = new ArrayList<>();
@@ -49,7 +49,7 @@ public class WebSampleSingleDriver extends AbstractTest {
     
     @Test
     @MethodOwner(owner = "qpsdemo")
-    @TestTag(name = "area test", value = "web")
+    @TestLabel(name = "feature", value = {"web", "regression"})
     public void testOpenPage() {
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
@@ -57,7 +57,7 @@ public class WebSampleSingleDriver extends AbstractTest {
     
     @Test(dependsOnMethods="testOpenPage") //for dependent tests Carina keeps driver sessions by default
     @MethodOwner(owner = "qpsdemo")
-    @TestTag(name = "area test", value = "web")
+    @TestLabel(name = "feature", value = {"web", "regression"})
     public void testOpenCompare() {
         // Open GSM Arena home page and verify page is opened
         // Open model compare page
@@ -69,7 +69,7 @@ public class WebSampleSingleDriver extends AbstractTest {
     
     @Test(dependsOnMethods="testOpenCompare") //for dependent tests Carina keeps driver sessions by default
     @MethodOwner(owner = "qpsdemo")
-    @TestTag(name = "area test", value = "web")
+    @TestLabel(name = "feature", value = {"web", "regression"})
     public void testReadSpecs() {
         // Compare 3 models
         specs = comparePage.compareModels("Samsung Galaxy J3", "Samsung Galaxy J5", "Samsung Galaxy J7 Pro");
@@ -77,7 +77,7 @@ public class WebSampleSingleDriver extends AbstractTest {
     
     @Test(dependsOnMethods="testReadSpecs") //for dependent tests Carina keeps driver sessions by default
     @MethodOwner(owner = "qpsdemo")
-    @TestTag(name = "area test", value = "web")
+    @TestLabel(name = "feature", value = {"web", "acceptance"})
     public void testCompareModels() {
         // Verify model announced dates
         Assert.assertEquals(specs.get(0).readSpec(SpecType.ANNOUNCED), "2016, March 31");
@@ -85,5 +85,5 @@ public class WebSampleSingleDriver extends AbstractTest {
         Assert.assertEquals(specs.get(2).readSpec(SpecType.ANNOUNCED), "2017, June");
     }
 
-    
+
 }
