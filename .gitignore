@@ -15,6 +15,7 @@
 .classpath
 .project
 *.log
+!docs/mobile-crash-logs/fixtures/*.log
 *.apk
 !src/main/resources/carinademoexample.apk
 *.zip

@@ -1,0 +1,21 @@
+# Sample AndroidRuntime crash block for extract-android-fatal.sh tests.
+# Not a real crash from this repo — fixture only.
+
+01-01 12:00:00.000  1234  1234 I ActivityManager: Start proc com.company.app
+01-01 12:00:00.100  5678  5678 D MyApp: onCreate begin
+01-01 12:00:00.200  5678  5678 E AndroidRuntime: FATAL EXCEPTION: main
+01-01 12:00:00.200  5678  5678 E AndroidRuntime: Process: com.company.app, PID: 5678
+01-01 12:00:00.200  5678  5678 E AndroidRuntime: java.lang.RuntimeException: Unable to create application com.company.app.App: java.lang.IllegalStateException: missing config
+01-01 12:00:00.200  5678  5678 E AndroidRuntime: 	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:1)
+01-01 12:00:00.200  5678  5678 E AndroidRuntime: 	at android.app.ActivityThread.access$1300(ActivityThread.java:1)
+01-01 12:00:00.200  5678  5678 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1)
+01-01 12:00:00.200  5678  5678 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:1)
+01-01 12:00:00.200  5678  5678 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:1)
+01-01 12:00:00.200  5678  5678 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:1)
+01-01 12:00:00.200  5678  5678 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+01-01 12:00:00.200  5678  5678 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:1)
+01-01 12:00:00.200  5678  5678 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1)
+01-01 12:00:00.200  5678  5678 E AndroidRuntime: Caused by: java.lang.IllegalStateException: missing config
+01-01 12:00:00.200  5678  5678 E AndroidRuntime: 	at com.company.app.App.onCreate(App.java:42)
+01-01 12:00:00.200  5678  5678 E AndroidRuntime: 	... 9 more
+01-01 12:00:00.300  1234  1234 I ActivityManager: Process com.company.app (pid 5678) has died
